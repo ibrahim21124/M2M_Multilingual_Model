@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CdiOneView Localization Translator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='/static/style.css'>
+    </head>
+
+    <body>
+        <nav id="navbar-example2" class="navbar navbar-light bg-transparent px-3">
+            <a class="navbar-brand" href="/">Home</a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Language Translator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/basicversion">Basic Version</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class='content' align="center">
+            <h4>Translator has Provided with the Following Output:</h4>
+            <br/>
+            <div class="row g-3">  
+                <div class="col">
+                </div>
+                
+                <div class="col">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <th scope="row">Translated to Langage: </th>
+                            <td>{{language}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Input Sentence: </th>
+                            <td>{{text}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Output Translation: </th>
+                            <td>{{trans}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+                <div class="col">
+                </div>
+            </div>
+            <br/>
+            <a class="btn btn-success" href="/" role="button">Go back to main page</a>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+    <footer class="bg-transparent text-center text-lg-start">
+        <!-- Copyright -->
+    </footer>
+</html>

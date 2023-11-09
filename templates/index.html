@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CdiOneView Localization Translator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='/static/style.css'>
+    </head>
+
+    <body>
+        <nav id="navbar-example2" class="navbar navbar-light bg-transparent px-3">
+            <a class="navbar-brand" href="/">Home</a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Language Translator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/basicversion">Basic Version</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class='content'>
+            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+                <h4>Welcome to CdiOneView Language Translator</h4>
+            </div><br/>
+
+            <form action="/translateexcel" method="POST" enctype="multipart/form-data">
+                <div class="form-floating">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Enter CSV File:</label>
+                            <input class="form-control" type="file" name="file">
+                        </div> 
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="target_language" class="form-label">Select Target Language:</label>
+                            <select name="target_language" id="target_language" class="form-control">
+                                <option selected>Select...</option>
+                                <option value="da">Danish</option>
+                                <option value="de">German</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="it">Italian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="nl">Dutch</option>
+                                <option value="sv">Swedish</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><br/>
+                <button type="submit" class="btn btn-success">Translate</button>
+            </form>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+    <footer class="bg-transparent text-center text-lg-start">
+        <!-- Copyright -->
+    </footer>
+</html>

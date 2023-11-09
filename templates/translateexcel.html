@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CdiOneView Localization Translator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='/static/style.css'>
+    </head>
+
+    <body>
+        <nav id="navbar-example2" class="navbar navbar-light bg-transparent px-3">
+            <a class="navbar-brand" href="/">Home</a>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Language Translator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/basicversion">Basic Version</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class='content' align="center">
+            <h4>Translator has Provided with the Following Output:</h4>
+            <div class="row g-3">
+                <div class="col">
+                </div>
+                 
+                <div class="col-md-9">
+                    <h5>Output Generated from Model:</h5>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                {% for column in columns %}
+                                    <th>{{ column }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for index, row in data.iterrows() %}
+                                <tr>
+                                    {% for column in columns %}
+                                        <td>{{ row[column] }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            
+                <div class="col">
+                </div>
+            </div>
+            <br/>
+            <a class="btn btn-success" href={{ url_for('download', filename=output_file) }} download>Download Your Output!</a>
+            <a class="btn btn-success" href="/" role="button">Go back to main page</a>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+    <footer class="bg-transparent text-center text-lg-start">
+        <!-- Copyright -->
+    </footer>
+</html>

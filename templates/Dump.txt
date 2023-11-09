@@ -1,0 +1,81 @@
+@app.route('/translate', methods=["POST"])
+def translate():
+    input_dict = dict(request.form)
+    print(input_dict)
+#     input_file = session.get('Filename', None)
+#     print(input_file)
+#     Text_from_File=pd.read_csv(destinaton, keep_default_na=False)
+#     TEXT=Text_from_File["English"]
+    
+    TEXT=list(input.values())[0]
+    TO_LANGUAGE=str(list(input_dict.keys())[1])
+#     TEXT=["Hello How are you", "I am fine Thank You"]
+#     OUTPUT_FILE="static/SampleOut.csv"
+    
+    if(TO_LANGUAGE == "de"):
+        LANGUAGE="German"
+    elif(TO_LANGUAGE == "es"):
+        LANGUAGE="Spanish"
+    elif(TO_LANGUAGE == "ja"):
+        LANGUAGE="Japanese"
+    input_text = TEXT
+    
+    text_token = tokenizer(input_text, padding=True, max_length = 128,truncation=True, return_tensors="pt")
+    output_text_generate = model.generate(**text_token, forced_bos_token_id=tokenizer.get_lang_id(TO_LANGUAGE))
+    output_text = tokenizer.batch_decode(output_text_generate, skip_special_tokens=True)
+    
+    for text in input_text:
+        
+    
+    output_text_final = [item for sublist in output_text for item in sublist]
+    
+    output_dataset = {"English" : input_text, LANGUAGE : output_text_final}
+    output_df = pd.DataFrame(output_dataset)
+    output_df.to_csv(OUTPUT_FILE)
+
+    OUTPUT_FILE_FINAL = "/" + str(OUTPUT_FILE)
+    TRANS=OUTPUT_FILE_FINAL
+    print(OUTPUT_FILE_FINAL)
+    
+    return render_template('translate.html', text=TEXT, trans=TRANS, language=LANGUAGE)
+
+
+# @app.route('/translate', methods=["POST"])
+# def translate():
+#     input_dict = dict(request.form)
+#     print(input_dict)
+# #     input_file = session.get('Filename', None)
+# #     print(input_file)
+# #     Text_from_File=pd.read_csv(destinaton, keep_default_na=False)
+# #     TEXT=Text_from_File["English"]
+
+#     TO_LANGUAGE=str(list(input_dict.keys())[0])
+#     TEXT=["Hello How are you", "I am fine Thank You"]
+#     OUTPUT_FILE="static/SampleOut.csv"
+    
+#     if(TO_LANGUAGE == "de"):
+#         LANGUAGE="German"
+#     elif(TO_LANGUAGE == "es"):
+#         LANGUAGE="Spanish"
+#     elif(TO_LANGUAGE == "ja"):
+#         LANGUAGE="Japanese"
+    
+#     input_text=TEXT
+#     output_text = []
+    
+#     for text in input_text:
+#         text_token = tokenizer(text, padding=True, max_length = 128,truncation=True, return_tensors="pt")
+#         output_text_generate = model.generate(**text_token, forced_bos_token_id=tokenizer.get_lang_id(TO_LANGUAGE))
+#         output_text.append(tokenizer.batch_decode(output_text_generate, skip_special_tokens=True))
+    
+#     output_text_final = [item for sublist in output_text for item in sublist]
+    
+#     output_dataset = {"English" : input_text, LANGUAGE : output_text_final}
+#     output_df = pd.DataFrame(output_dataset)
+#     output_df.to_csv(OUTPUT_FILE)
+
+#     OUTPUT_FILE_FINAL = "/" + str(OUTPUT_FILE)
+#     TRANS=OUTPUT_FILE_FINAL
+#     print(OUTPUT_FILE_FINAL)
+    
+#     return render_template('translate.html', text=TEXT, trans=TRANS, language=LANGUAGE)
