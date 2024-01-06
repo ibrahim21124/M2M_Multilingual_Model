@@ -34,6 +34,9 @@ Follow these instructions to get the Multilingual Model Translator up and runnin
 2. Enter the text file you want to translate and select the target language.
 3. Receive the translated text with high accuracy
 
+## License
+This project is licensed under the [MIT License](LICENSE).
+
 ## Contributing
 
 Contributions are welcome! If you have ideas for improvements, additional language support, or new features, please open an issue or submit a pull request.
